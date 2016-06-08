@@ -1,0 +1,147 @@
+{% load  staticfiles %}
+<script language="javascript" type="text/javascript" src="js/popup.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover" id="list_banner">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Created at</th>
+                <th>Order</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for info in i %}
+                <tr id="row{{ info.id_html_builder_structure }}" name="{{ info.id_html_builder_structure }}">
+                    <td class ='preview'style="vertical-align:middle"><input name ='preview' size="3" value={{ info.fk_html_builder_main }}></td>
+                    <td style="vertical-align:middle">{% with 'img/html_builder/'|add:info.name|add:'.png' as image_static %}<img src="{% static image_static %}">{% endwith %}</td>
+                    <td style="vertical-align:middle"><input name ='nameStr' size="12" value={{ info.name }}></td>
+                    <td style="vertical-align:middle">{{ info.created_at }}</td>
+                    <td class='id_row' style="vertical-align:middle"><input name ='order' size="2" value={{ info.order }}> </td>
+                    <td class='id_row' style="vertical-align:middle"><button name="id_delete" type="submit" class="btn btn-primary" value="{{ info.id_html_builder_structure }}">Delete</button></td>
+                    <td style="vertical-align:middle"><button type="submit" class="btn btn-primary" name="id_edit" value="{{ info.id_html_builder_structure }}">Edit</button></td>
+                </tr>
+                {% csrf_token %}
+                {%endfor%}
+              </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+
+<script>
+    $('[name = id_delete]').click(function () {
+        var id = $(this).val();
+        var valida = confirm('¿Desea eliminar este layout?');
+        if (valida == false){
+            return false;
+        }
+        else{
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "{% url 'html_builder:delete_structure' %}",
+            data: { id: id},
+            success: function (data) {
+                console.log(data);
+                $("#row"+id).fadeOut();
+            }
+        });
+      return false;
+    }
+    renumber_table();
+    });
+
+     $('[name = id_edit]').click(function () {
+        var id_html_builder_structure = '';
+        id_html_builder_structure = $(this).val();
+         console.log(id_html_builder_structure);
+        $('html,body').animate({
+            scrollTop: $("#scrollToHere").offset().top
+        }, 1000);
+
+         $('[name = GeneEdit]').attr("disabled", false);
+         $('[name = LoadEdit]').attr("disabled", false);
+         $('[name = GeneIt]').attr("disabled", true);
+         $('[name = LoadEdit]').val(id_html_builder_structure);
+         $('[name = GeneIt]').val(id_html_builder_structure);
+         var title ='/ Edit';
+         $.ajax({
+             type: "GET",
+             contentType: "application/json; charset=utf-8",
+             url: "{% url 'html_builder:full_structure' %}",
+             data: {
+                 id_html_builder_structure: id_html_builder_structure,
+             },
+             success: function (data) {
+                 /* console.log(data); */
+                 $('#structure_fields').html(data);
+                 $('#structure_title').html(title);
+             }
+         });
+    });
+
+    $(document).ready(function () {
+        //Helper function to keep table row from collapsing when being sorted
+        var fixHelperModified = function (e, tr) {
+            var $originals = tr.children();
+            var $helper = tr.clone();
+            $helper.children().each(function (index) {
+                $(this).width($originals.eq(index).width());
+            });
+            return $helper;
+        };
+
+        //Make diagnosis table sortable
+        $('#list_banner tbody').sortable({
+            helper: fixHelperModified,
+            stop: function (event, ui) {
+                renumber_table();
+            }
+        }).disableSelection();
+
+        $('#list_banner').on('click',function () {
+            renumber_table();
+        });
+    });
+
+     function renumber_table() {
+         var order = 0;
+         $("#list_banner tbody tr ").each(function () {
+            order = order + 1;
+            ////This is the line I updated.
+            $(this).find('[name = order]').val(order);
+            id_html_builder_structure = $(this).find('[name = id_delete]').val();
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "{% url 'html_builder:update_order' %}",
+                data: {
+                    id_html_builder_structure: id_html_builder_structure,
+                    order : order,
+                },
+                    success: function (data) {
+                        /* console.log(data); */
+                        console.log("Renumber Table Done!");
+                    }
+                });
+            });
+        }
+
+    $("#structure_html_edit").submit(function(){
+
+    });
+</script>
+
+
+
+
+

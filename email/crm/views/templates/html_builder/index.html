@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+{% load  staticfiles %}
+
+{% block header %}
+
+    <div class="col-sm-12">
+        <h2>HTML Builder Wizard</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{% url 'dashboard:index' %}">Dashboard</a>
+            </li>
+            <li>
+                <a>HTML Builder</a>
+            </li>
+            <li class="active">
+                <strong>Create</strong>
+            </li>
+        </ol>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>General information</h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="GET" class="form-horizontal" id="update_general_information">
+
+                        <input type="hidden" class="form-control" name="id_html_builder_main" id="id_html_builder_main" value="{{ id_html_builder_main }}">
+
+                        <div class="form-group"><label class="col-sm-2 control-label">Campaign Name</label>
+                            <div class="col-sm-10"><input type="text" class="form-control" id="main_campaign" name="campaign"required></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">Category</label>
+                            <div class="col-sm-10"><input type="text" class="form-control" id="main_category" name="category" value="gral" required></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">Country</label>
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" id="main_country" name="country">
+                                    <option value="ar">Argentina</option>
+                                    <option value="cl">Chile</option>
+                                    <option value="co">Colombia</option>
+                                    <option value="ec">Ecuador</option>
+                                    <option value="mx">México</option>
+                                    <option value="pa">Panamá</option>
+                                    <option value="pe">Perú</option>
+                                    <option value="ve">Venezuela</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-4">
+                                <button class="btn btn-primary" id="main_button" type="submit">Save information</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Layout</h5>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" id="structure_type">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6"><div class="radio"><label> <input type="radio" value="i_bigbanner" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_bigbanner.png' %}"></label></div></div>
+                                <div class="col-md-6"><div class="radio"><label> <input type="radio" value="i_medvertical" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_medvertical.png' %}"></label></div></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6"><div class="radio"><label> <input type="radio" value="i_4verticales" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_4verticales.png' %}"></label></div></div>
+                                <div class="col-md-6"><div class="radio"><label> <input type="radio" value="i_6verticales" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_6verticales.png' %}"></label></div></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6"><div class="radio"><label> <input type="radio" value="i_jetlore1fila" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_jetlore1fila.png' %}"></label></div></div>
+                                <div class="col-md-6"><div class="radio"><label> <input type="radio" value="i_medhorizontal" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_medhorizontal.png' %}"></label></div></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6"><div class="radio"><label> <input type="radio" value="i_teaser2imagenes" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_teaser2imagenes.png' %}"></label></div></div>
+                                <div class="col-md-6"><div class="radio"><label> <input type="radio" value="i_bb_4" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_bb_4.png' %}"></label></div></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12" algn="center"><div class="radio"><label> <input type="radio" value="i_voucher" name="options_structure" class="hidden_radio"><img src="{% static 'img/html_builder/i_voucher.png' %}"></label></div></div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title" id="scrollToHere">
+                    <h5>HTML <small id="structure_title"></small></h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="GET" class="form-horizontal" id="structure_html">
+
+                        <input type="hidden" class="form-control" name="fk_html_builder_main" id="id_html_builder_main" value="{{ id_html_builder_main }}">
+                        <input type="hidden" class="form-control" name="name" id="type_structure">
+
+                          <div id="structure_fields"></div>
+
+                        <div id="structure_fields"></div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group" >
+                            <div class="col-sm-8 col-sm-offset-4">
+                                <button class="btn btn-primary" disabled="true" name='GeneIt' type="submit" id="structure_button" value="generate">Generate it!</button>
+                                <button class="btn btn-primary" type="reset">Delete Information</button>
+                                <button class="btn btn-primary" disabled="true" name='GeneEdit' type="submit" id="structure_button" value="edit">Edit it!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="scrollStructure">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Preview and Structure</h5>
+                </div>
+                <div class="ibox-content">
+                    <div id="structure_list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Generate all HTML</h5>
+                </div>
+
+                <div class="ibox-content">
+                    <form method="POST" class="form-horizontal" action="{% url 'html_builder:build_html' %}">
+                        {% csrf_token %}
+                        <input type="hidden" class="form-control" name="id_html_builder_main" id="id_html_builder_main" value="{{ id_html_builder_main }}">
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-4">
+                                <button class="btn btn-primary" disabled = "true" type="submit" name ='GenHTML'>Generate it all html!</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form method="POST" class="form-horizontal" target="_blank" action="{% url 'html_builder:build_html_preview' %}">
+                        {% csrf_token %}
+                        <input type="hidden" class="form-control" name="id_html_builder_main" id="id_html_builder_main" value="{{ id_html_builder_main }}">
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-4">
+                                <button class="btn btn-primary" disabled ='true' type="submit" name='Preview'>Preview!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        $(document).ready(function() {
+            var noti_HTML = false;
+
+            $("#update_general_information").submit(function(){
+                console.log($(this).serialize());
+                var main_save = $("#main_save").val();
+                var main_campaign = $("#main_campaign").val();
+                var main_category = $("#main_category").val();
+                var main_country = $("#main_country").val();
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "{% url 'html_builder:update_general_information' %}",
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        /* console.log(data); */
+                        $("#main_save").html('Information save!');
+                        $("#main_campaign").attr('disabled');
+                        $("#main_category").attr('disabled');
+                        $("#main_country").attr('disabled');
+                        $("#main_button").attr('disabled');
+                    }
+                });
+                console.log("La informacion ha sido guardada exitosamente");
+                 $('html,body').animate({
+                    scrollTop: $("#scrollToHere").offset().top
+                    }, 1000);
+                $('[name = GenHTML]').attr("disabled", false);
+                $('[name = Preview]').attr("disabled", false);
+                return false;
+            });
+
+            $("#structure_html").submit(function(){
+                if (noti_HTML == false) {
+                    console.log("Escoge un layout");
+                    return false;
+                } else {
+
+                        var page = '';
+                        if ($("#structure_button").val() == 'generate') {
+                            page = "{% url 'html_builder:save_structure' %}"
+                        } else {
+                            page = "{% url 'html_builder:edit_structure' %}"
+                        }
+
+                        console.log(page);
+                        console.log($(this).serialize());
+                        $.ajax({
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                            url: page,
+                            data: $(this).serialize(),
+                            success: function (data) {
+                                /* console.log(data); */
+                                $('#structure_list').html(data);
+                            }
+                        });
+                        $('html,body').animate({
+                            scrollTop: $("#scrollStructure").offset().top
+                        }, 1000);
+                        console.log("Los datos se recibieron exitosamente, espera a que se genere en preview and structure");
+                        return false;
+                }
+            });
+
+            $('#structure_type input').on('change', function() {
+                var type = $('input[name=options_structure]:checked', '#structure_type').val();
+                var title = '';
+                console.log(type);
+                if (type == 'i_bigbanner') {
+                    title = '/ Big Banner'
+                    noti_HTML = true;
+                } else if(type == 'i_medvertical') {
+                    title = '/ 2 Verticals'
+                    noti_HTML = true;
+                } else if(type == 'i_4verticales') {
+                    title = '/ 4 Verticals'
+                    noti_HTML = true;
+                } else if(type == 'i_6verticales') {
+                    title = '/ 6 Verticals'
+                    noti_HTML = true;
+                } else if(type == 'i_jetlore1fila') {
+                    title = '/ Jetlore 1 row'
+                    noti_HTML = true;
+                } else if(type == 'i_medhorizontal') {
+                    title = '/ Medium'
+                    noti_HTML = true;
+                } else if(type == 'i_teaser2imagenes') {
+                    title = '/ Teaser 2 images'
+                    noti_HTML = true;
+                } else if(type == 'i_bb_4') {
+                    title = '/ Big Banner + (x4)'
+                    noti_HTML = true;
+                } else if(type == 'i_voucher') {
+                    title = '/ Voucher'
+                    noti_HTML = true;
+                }
+                if (noti_HTML==true)
+                {
+                    $('[name = GeneIt]').attr("disabled", false);
+                    $('[name = GeneEdit]').attr("disabled", true);
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: "{% url 'html_builder:get_type' %}",
+                        data: {
+                            type: type,
+                        },
+                        success: function (data) {
+                            $('#structure_fields').html(data);
+                            $('#structure_title').html(title);
+                            $('#type_structure').val(type);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+<!-- <li class="active"> -->
+<li>
+    <a href="{% url 'dashboard:index' %}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span> </a>
+</li>
+<!--
+<li>
+    <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">App Tools</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="">MICSLL & MIRPP</a></li>
+    </ul>
+</li>
+-->
+<li>
+    <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">HTML Builder</span>  <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li><a href="{% url 'html_builder:index' %}">Create</a></li>
+        <!-- <li><a href="{% url 'html_builder:list' %}">List</a></li> -->
+    </ul>
+</li>
+<!--
+<li>
+    <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="#">Third Level <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                <li>
+                    <a href="#">Third Level Item</a>
+                </li>
+                <li>
+                    <a href="#">Third Level Item</a>
+                </li>
+                <li>
+                    <a href="#">Third Level Item</a>
+                </li>
+
+            </ul>
+        </li>
+        <li><a href="#">Second Level Item</a></li>
+        <li>
+            <a href="#">Second Level Item</a></li>
+        <li>
+            <a href="#">Second Level Item</a></li>
+    </ul>
+</li>
+-->

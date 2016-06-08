@@ -1,0 +1,27 @@
+<div class="form-group"><label class="col-sm-2 control-label">URL image</label>
+    <div class="col-sm-10"><input type="text" class="form-control" name="url_img_1" required placeholder="example: http://media.linio.com.mx" pattern="(http|https)://.+"></div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="form-group"><label class="col-sm-2 control-label">URL link</label>
+    <div class="col-sm-10"><input type="text" class="form-control" name="url_link_1" required placeholder="example: http://www.linio.com.mx" pattern="(http|https)://(www.linio|linio).+"></div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="form-group"><label class="col-sm-2 control-label">Alt / Title</label>
+    <div class="col-sm-10"><input type="text" class="form-control" name="alt_title_1" required placeholder="Titulo de la imagen"></div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="form-group"><label class="col-sm-2 control-label">Code</label>
+    <div class="col-sm-10"><input type="text" class="form-control" name="code_1" required placeholder="cat_subcat_campana_marca_g/p"></div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="form-group"><label class="col-sm-2 control-label">Deeplink</label>
+    <div class="col-sm-10">
+        <select class="form-control m-b" name="is_deeplink">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+        </select>
+    </div>
+</div>
+{% if id_html_builder_structure %}
+    <input type="hidden" class="form-control" name="id_html_builder_structure" value="{{ id_html_builder_structure }}" hidden>
+{% endif %}

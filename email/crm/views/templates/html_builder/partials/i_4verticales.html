@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-xs-6">
+        <div class="form-group"><label class="col-sm-4 control-label">URL image A</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="url_img_1" required placeholder="example: http://media.linio.com.mx" pattern="(http|https)://.+"required></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">URL link A</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="url_link_1" required placeholder="example: http://www.linio.com.mx" pattern="(http|https)://(www.linio|linio).+"required></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">Alt / Title A</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="alt_title_1" required placeholder="Titulo de la imagen"></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">Code A</label>
+        <div class="col-sm-8"><input type="text" class="form-control" name="code_1" required placeholder="cat_subcat_campana_marca_g/p"></div>
+    </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="form-group"><label class="col-sm-4 control-label">URL image B</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="url_img_2" required placeholder="example: http://media.linio.com.mx" pattern="(http|https)://.+"required></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">URL link B</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="url_link_2" required placeholder="example: http://www.linio.com.mx" pattern="(http|https)://(www.linio|linio).+"required></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">Alt / Title B</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="alt_title_2" required placeholder="Titulo de la imagen"></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">Code B</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="code_2" required placeholder="cat_subcat_campana_marca_g/p"></div>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="form-group"><label class="col-sm-4 control-label">URL image C</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="url_img_3" required placeholder="example: http://media.linio.com.mx" pattern="(http|https)://.+"></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">URL link C</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="url_link_3" required placeholder="example: http://www.linio.com.mx" pattern="(http|https)://(www.linio|linio).+"></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">Alt / Title C</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="alt_title_3" required placeholder="Titulo de la imagen"></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">Code C</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="code_3" required placeholder="cat_subcat_campana_marca_g/p"></div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="form-group"><label class="col-sm-4 control-label">URL image D</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="url_img_4" required placeholder="example: http://media.linio.com.mx" pattern="(http|https)://.+"></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">URL link D</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="url_link_4" required placeholder="example: http://www.linio.com.mx" pattern="(http|https)://(www.linio|linio).+"></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">Alt / Title D</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="alt_title_4" required placeholder="Titulo de la imagen"></div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group"><label class="col-sm-4 control-label">Code D</label>
+            <div class="col-sm-8"><input type="text" class="form-control" name="code_4" required placeholder="cat_subcat_campana_marca_g/p"></div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div class="hr-line-dashed"></div>
+    <div class="form-group"><label class="col-sm-2 control-label">Deeplink</label>
+        <div class="col-sm-10">
+            <select class="form-control m-b" name="is_deeplink">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+    </div>
+</div>
+{% if id_html_builder_structure %}
+    <input type="hidden" class="form-control" name="id_html_builder_structure" value="{{ id_html_builder_structure }}" hidden>
+{% endif %}
